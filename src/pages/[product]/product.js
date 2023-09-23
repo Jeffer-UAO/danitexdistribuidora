@@ -1,18 +1,15 @@
 import { BasicLayout } from "@/layouts";
-import { DetailProduct, FooterApp, Separator } from "@/components";
+import { DetailProduct, FooterApp, Redes, Separator } from "@/components";
 import { Footer } from "@/components";
 
 export default function ProductPage(props) {
-  const { product, relate } = props;
+  const { product, relate, gallery } = props;
+
 
   return (
     <div>
-      <BasicLayout>
-        <Separator />
-        <Separator />
-        
-        <Separator />
-        <DetailProduct product={product} relate={relate} />
+      <BasicLayout>        
+        <DetailProduct product={product} relate={relate} gallery= {gallery} />
         <FooterApp />
         <Footer />
       </BasicLayout>

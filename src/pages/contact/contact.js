@@ -1,11 +1,10 @@
-import { Footer, Contact, Separator } from "@/components";
+import { Footer, Contact, Separator, Redes } from "@/components";
 import { BasicLayout } from "../../layouts";
 
 export default function ContactHome() {
   return (
     <>
       <BasicLayout>
-        <Separator />
         <Separator />
         <Contact />
 

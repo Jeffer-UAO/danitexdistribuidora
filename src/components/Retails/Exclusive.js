@@ -9,32 +9,56 @@ export function Exclusive(props) {
 
   return (
     <div className={styles.content}>
-      <h5>Te va a encantar</h5>
+      <h5>Más populares</h5>
 
       <div className={styles.listExclusive}>
         {map(
           products,
           (product, index) =>
             product.home && (
-              <Link
-                key={index}
-                href={`/${product.slug}`}
-                className={styles.list__product}
-              >
-                <CardImg
-                  alt="Card image cap"
-                  src={BASE_NAME + product.images}
-                />
+              <>
+              {product.images ? (
+                  <Link
+                    key={index}
+                    href={`/${product.slug}`}
+                    className={styles.list__product}
+                  >
+                    <CardImg
+                      alt="Card image cap"
+                      src={BASE_NAME + product.images}
+                    />
 
-                <div className={styles.product}>
-                  <CardTitle className={styles.title}>
-                    <h5>
-                      {product.name} {product.name_extend}
-                    </h5>
-                    <h6>$ {product.price1}</h6>
-                  </CardTitle>
-                </div>
-              </Link>
+                    <div className={styles.product}>
+                      <CardTitle className={styles.title}>
+                        <h5>
+                          {product.name} {product.name_extend}
+                        </h5>
+                        <h6>$ {product.price1}</h6>
+                      </CardTitle>
+                    </div>
+                  </Link>
+                ) : (
+                  <Link
+                    key={index}
+                    href={`/${product.slug}`}
+                    className={styles.list__product}
+                  >
+                    <CardImg
+                      alt="Card image cap"
+                      src={ product.image_alterna}
+                    />
+                    <div className={styles.product}>
+                      <CardTitle className={styles.title}>
+                        <h5>
+                          {product.name} {product.name_extend}
+                        </h5>
+                        <h6>$ {product.price1}</h6>
+                      </CardTitle>
+                    </div>
+                  </Link>
+                )}
+              </>
+             
             )
         )}
       </div>
