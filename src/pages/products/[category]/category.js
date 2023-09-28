@@ -16,7 +16,7 @@ export default function category(props) {
   return (
     <div>
       <BasicLayout>
-        <Separator />
+     
         {hasProduct ? (
           <Listproducts products={products} title={category.name} />
         ) : (

@@ -36,7 +36,7 @@ export function Listproducts(props) {
   const [propductAlternaWhatsApp, setPropductAlternaWhatsApp] = useState("");
 
   const format = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Cambia 'es-ES' por tu configuración regional
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Cambia 'es-ES' por tu configuración regional
   };
 
   const toggleModal = () => {
@@ -119,7 +119,7 @@ export function Listproducts(props) {
               )}
               <div className={styles.product}>
                 <CardTitle className={styles.title}>
-                  <h5>{product.productData.name_extend}</h5>                 
+                  <h5>{product.productData.name_extend}</h5>
                 </CardTitle>
 
                 <div className={styles.price}>
@@ -130,7 +130,6 @@ export function Listproducts(props) {
                     {product.productData.price2 > 1 && (
                       <h5>POR MAYOR $ {format(product.productData.price2)}</h5>
                     )}
-                    
                   </CardSubtitle>
 
                   {product.productData.images ? (
@@ -169,7 +168,9 @@ export function Listproducts(props) {
                 </div>
               </div>
             </div>
-            <h6>Disponible {product.productData.qty}</h6>
+            {product.productData.qty && (
+              <h6>Disponible {product.productData.qty}</h6>
+            )}
             <Button
               color="primary"
               onClick={() => addProductId(product.productData.codigo)}

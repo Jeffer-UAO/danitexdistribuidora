@@ -11,7 +11,7 @@ export function Search(props) {
   const { products } = props;
 
   const format = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   return (
@@ -36,34 +36,20 @@ export function Search(props) {
                   src={BASE_NAME + product.images}
                 />
               ) : (
-                <CardImg
-                  alt="Card image cap"
-                  src={product.image_alterna}
-                />
-              )
-              }
+                <CardImg alt="Card image cap" src={product.image_alterna} />
+              )}
               <div className={styles.product}>
                 <CardTitle className={styles.title}>
-                  <p>
-                    {product.name_extend}
-                  </p>
-
-                  {product.price1 !== null && (
-                    <h6>$ {format(product.price1)}</h6>
-                  )}
-                  {product.price2 !== null && (
-                    <h6>$ {format(product.price2)}</h6>
-                  )}
-
-                  <h5>Disponible: {product.qty}</h5>
-
+                  <p>{product.name_extend}</p>
+                  {product.price1 > 0 && <h6>$ {format(product.price1)}</h6>}
+                  {product.price2 > 0 && <h6>$ {format(product.price2)}</h6>}
+                  {product.qty > 0 && <h5>Disponible: {product.qty}</h5>}
                 </CardTitle>
               </div>
             </Link>
           </div>
-
         ))}
-      </div >
+      </div>
 
       <FooterApp />
     </>
