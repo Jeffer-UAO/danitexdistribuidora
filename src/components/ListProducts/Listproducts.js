@@ -151,7 +151,7 @@ export function Listproducts(props) {
         ))}
       </div>
 
-      <Modal isOpen={isOpen} toggle={toggleModal}>
+      <Modal centered isOpen={isOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Ingrese Cantidad</ModalHeader>
 
         <ModalBody>

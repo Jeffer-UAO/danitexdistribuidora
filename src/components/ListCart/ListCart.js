@@ -12,7 +12,7 @@ import styles from "./ListCart.module.scss";
 export function ListCart(props) {
   const { product } = props;
 
-  const scale = "c_scale,f_auto,q_50,w_80/";
+  const scale = "c_scale,f_auto,q_50,w_200/";
   const upload = "image/upload/";
 
   const { decreaseCart, incrementCart, deleteCart } = useCart();
@@ -29,7 +29,7 @@ export function ListCart(props) {
             {item.images ? (
               <CardImg
                 alt="Card image cap"
-                src={BASE_NAME + item.images}
+                src={BASE_NAME + upload + scale + item.images.split(upload)[1]}
                 className={styles.skeleton}
               />
             ) : (
@@ -47,7 +47,7 @@ export function ListCart(props) {
               )}
 
               {item.price2 > 0 && (
-                <p className={styles.price}>Mayor: $ {format(item.price2)}</p>
+                <p className={styles.price}>$ {format(item.price2)}</p>
               )}
 
               <div className={styles.btn}>
@@ -68,7 +68,7 @@ export function ListCart(props) {
                 onClick={() => deleteCart(item.codigo)}
                 className={styles.btnDelete}
               >
-                <BsTrash3 size="15" color="red" />
+                <BsTrash3 size="15" color="grey" />
               </Button>
             </div>
           </div>
