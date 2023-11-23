@@ -3,12 +3,12 @@
   position: fixed;
   bottom: 0px;
   justify-content: center;
-
+  width: 100vw;
   .paneluser {
     display: flex;
     background-color: #fdfdfd;
     align-items: center;
-    width: 100vw;
+ 
     justify-content: space-between;
     padding: 0 5px 0 5px;
 
@@ -35,7 +35,6 @@
       align-items: center;
       position: absolute;
       background-color: rgb(255, 255, 255);
-      color: rgb(36, 32, 97);
       font-weight: 800;
       font-size: 13px;
       left: 50px;

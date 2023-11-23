@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Categories } from "@/api/category";
-import { Products } from "@/api/products";
 import {
   ListCategories,
   Footer,
-  Promotion,
-  Exclusive,
   FooterApp,
-  Redes,
-  Separator,
 } from "@/components";
 
 import { BasicLayout } from "../../layouts";
 
 const categoriesCtrl = new Categories();
-const productsCtrl = new Products();
 
 export default function HomePage() {
   const [categories, setCategories] = useState(null);
-  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -31,24 +24,12 @@ export default function HomePage() {
     })();
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await productsCtrl.getProductByOfertAndExclusive();
-        setProducts(response);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
 
-  if (products !== null) {
+  if (categories !== null) {
     return (
       <>
         <BasicLayout>
           <ListCategories categories={categories} />
-          <Promotion products={products} />
-          <Exclusive products={products} />
           <FooterApp />
           <Footer />
         </BasicLayout>
@@ -58,7 +39,7 @@ export default function HomePage() {
     return (
       <>
         <BasicLayout>
-          <ListCategories categories={categories} />
+         <h4>Cargando...</h4>
           <FooterApp />
           <Footer />
         </BasicLayout>

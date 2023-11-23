@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { map, size } from "lodash";
+import { size } from "lodash";
 import { BASE_NAME } from "@/config/constants";
 import { useWhatsApp, useGallery, useCart } from "@/hooks";
 import { toast } from "react-toastify";
@@ -22,9 +22,13 @@ import { BsWhatsapp } from "react-icons/bs";
 import styles from "./DetailProduct.module.scss";
 
 export function DetailProduct(props) {
-  const { product, relate } = props;
+  const { product } = props;
+
+  const scale = "c_scale,f_auto,q_auto,w_800/";
+  const upload = "image/upload/";
+
   const { addCart } = useCart();
-  const { getGalleryByCode, gallery, loading, error } = useGallery();
+  const { getGalleryByCode, gallery } = useGallery();
   const { generateWhatsAppLink, items, selectedItem, handleItemClick } =
     useWhatsApp();
 
@@ -123,7 +127,12 @@ export function DetailProduct(props) {
             ) : productData.images ? (
               <CardImg
                 alt="Card image cap"
-                src={BASE_NAME + productData.images}
+                src={
+                  BASE_NAME +
+                  upload +
+                  scale +
+                  productData.images?.split(upload)[1]
+                }
               />
             ) : (
               <CardImg alt="Card image cap" src={productData.image_alterna} />
@@ -182,52 +191,6 @@ export function DetailProduct(props) {
                 Agregar al Carrito
               </Button>
               <label>{productData.description}</label>
-            </div>
-          </div>
-
-          <div className={styles.relate}>
-            <p>PRODUCTOS RELACIONADOS</p>
-
-            <div className={styles.list}>
-              {map(relate, (product, index) => (
-                <div key={index}>
-                  {product.images ? (
-                    <div
-                      className={styles.list__product2}
-                      onClick={() => changeDetail(product)}
-                    >
-                      <CardImg
-                        alt="Card image cap"
-                        src={BASE_NAME + product.images}
-                      />
-
-                      <div className={styles.name}>
-                        <CardTitle>
-                          <h5>{product.name_extend}</h5>
-                          <h6>$. {format(product.price1)}</h6>
-                        </CardTitle>
-                      </div>
-                    </div>
-                  ) : (
-                    <div
-                      className={styles.list__product2}
-                      onClick={() => changeDetail(product)}
-                    >
-                      <CardImg
-                        alt="Card image cap"
-                        src={product.image_alterna}
-                      />
-
-                      <div className={styles.name}>
-                        <CardTitle>
-                          <h5>{product.name_extend}</h5>
-                          <h6>$. {format(product.price1)}</h6>
-                        </CardTitle>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
             </div>
           </div>
 

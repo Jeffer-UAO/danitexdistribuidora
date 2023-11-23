@@ -24,7 +24,12 @@ import styles from "./ListProduts.module.scss";
 
 export function Listproducts(props) {
   const { products, title } = props;
-  const { addCart, loading } = useCart();
+
+  const scale = "c_scale,f_auto,q_20,w_400/";
+  const upload = 'image/upload/';
+
+
+  const { addCart } = useCart();
   const { generateWhatsAppLink, items, selectedItem, handleItemClick } =
     useWhatsApp();
 
@@ -65,16 +70,6 @@ export function Listproducts(props) {
     setIsOpen2(!isOpen2);
   };
 
-  const addProductToWhatsApp = (data) => {
-    setPropductWhatsApp(data);
-    toggleModal2();
-  };
-
-  const addProductAlternaToWhatsApp = (data) => {
-    setPropductAlternaWhatsApp(data);
-    toggleModal2();
-  };
-
   const addDataToWhatsApp = () => {
     if (propductWhatsApp != "") {
       const whatsappLink = generateWhatsAppLink(
@@ -105,9 +100,14 @@ export function Listproducts(props) {
               {product.productData.images ? (
                 <Link href={`/${product.productData.slug}`}>
                   <CardImg
-                    alt="Card image cap"
-                    src={BASE_NAME + product.productData.images}
-                  />
+                  alt="Card image cap"
+                  src={
+                    BASE_NAME +
+                  upload +
+                  scale +
+                    product.productData.images.split(upload)[1]
+                  }
+                />
                 </Link>
               ) : (
                 <Link href={`/${product.productData.slug}`}>
@@ -125,46 +125,16 @@ export function Listproducts(props) {
                 <div className={styles.price}>
                   <CardSubtitle>
                     {product.productData.price1 > 1 && (
+                      
                       <h5>$ {format(product.productData.price1)}</h5>
                     )}
                     {product.productData.price2 > 1 && (
-                      <h5>POR MAYOR $ {format(product.productData.price2)}</h5>
+                      <>
+                        <h5>POR MAYOR</h5>
+                        <h5>$ {format(product.productData.price2)}</h5>
+                      </>
                     )}
                   </CardSubtitle>
-
-                  {product.productData.images ? (
-                    <div
-                      className={styles.whatsapp}
-                      onClick={() =>
-                        addProductToWhatsApp(
-                          product.productData.images +
-                            " " +
-                            product.productData.name_extend +
-                            " " +
-                            "Referencia: " +
-                            product.productData.ref
-                        )
-                      }
-                    >
-                      <BsWhatsapp size={25} color="white" />
-                    </div>
-                  ) : (
-                    <div
-                      className={styles.whatsapp}
-                      onClick={() =>
-                        addProductAlternaToWhatsApp(
-                          product.productData.image_alterna +
-                            " " +
-                            product.productData.name_extend +
-                            " " +
-                            "Referencia: " +
-                            product.productData.ref
-                        )
-                      }
-                    >
-                      <BsWhatsapp size={25} color="white" />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
