@@ -108,7 +108,12 @@ export function Available(props) {
         <Link href={`/${product.productData.slug}`}>
           <CardImg
             alt="Card image cap"
-            src={product.productData.image_alterna}
+            src={
+              BASE_NAME +
+              upload +
+              scale +
+              product.productData.images.split(upload)[1]
+            }
           />
         </Link>
       )}
