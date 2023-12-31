@@ -3,9 +3,8 @@
   align-items: center;
   width: 100%;
   z-index: 5;
-  background-color: rgba(201, 200, 200, 0.678);
+  background-color: rgb(84, 157, 199);
   padding: 1rem;
-  border-radius: 0 0 1rem 1rem;
 
   input {
     left: 0;
@@ -19,7 +18,9 @@
     padding: 0.5rem;
     border-radius: 2rem;
     border: solid 2px rgb(165, 165, 165);
+
   }
+
 }
 
 .busqueda {
@@ -29,22 +30,21 @@
 }
 
 .list {
-  padding: 1rem;
+  padding: 0.5rem;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
 
   font-size: 0.8rem;
   text-align: center;
   margin-bottom: 5rem;
 
-  &__product {
-
+  &__product {    
     img {
       border-top-right-radius: 5px;
       border-top-left-radius: 5px;
       object-fit: cover;
-      object-position: center center;
+      object-position: center center;      
     }
 
     h5 {
@@ -54,8 +54,20 @@
 
     h6 {
       font-size: 1.2rem;
+      padding: 0px 5px 10px 10px;
       color: #fd384f;
     }
+  }
+
+  &__soldout{
+    img {  
+      border-top-right-radius: 0.5rem;
+      border-top-left-radius: 0.5rem;
+      object-fit: cover;
+      object-position: center center;
+      filter: grayscale(1);
+    }
+
   }
 }
 
