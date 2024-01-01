@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
 
   const productCtrl = new Products();
   const responseProduct = await productCtrl.getProductsByCategory(
-    responseCategory.id
+    responseCategory?.id
   );
 
   return {

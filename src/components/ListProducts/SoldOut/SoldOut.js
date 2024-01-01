@@ -28,7 +28,7 @@ export function SoldOut(props) {
       ) : (
         <CardImg alt="Card image cap" src={product.productData.image_alterna} />
       )}
-      <h5>{product.productData.name_extend}</h5>
+      <p>{product.productData.name_extend}</p>
     </div>
   );
 }

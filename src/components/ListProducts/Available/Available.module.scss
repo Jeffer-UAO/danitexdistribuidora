@@ -23,6 +23,9 @@
     object-position: center center;  
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
+    &:active{
+      transform: scale(0.9);
+    }
   }
 
   h5 {
