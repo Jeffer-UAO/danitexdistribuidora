@@ -12,12 +12,13 @@ import styles from "./ListCart.module.scss";
 export function ListCart(props) {
   const { product } = props;
 
-  const scale = "c_scale,f_auto,q_50,w_200/";
+  const scale = "c_scale,f_auto,q_50,w_150/";
   const upload = "image/upload/";
 
   const { decreaseCart, incrementCart, deleteCart } = useCart();
+
   const format = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
   };
 
   return (
@@ -30,46 +31,43 @@ export function ListCart(props) {
               <CardImg
                 alt="Card image cap"
                 src={BASE_NAME + upload + scale + item.images.split(upload)[1]}
-                className={styles.skeleton}
               />
             ) : (
               <CardImg
                 alt="Card image cap"
-                src={BASE_NAME + upload + scale + item.images.split(upload)[1]}
+                src={item.image_alterna}
                 className={styles.skeleton}
               />
             )}
 
             <div className={styles.detalle}>
               <p className={styles.name}>{item.name_extend}</p>
-              {item.price1 > 0 && (
-                <p className={styles.price}>$. {format(item.price1)} </p>
-              )}
 
-              {item.price2 > 0 && (
-                <p className={styles.price}>$ {format(item.price2)}</p>
-              )}
+              {/* <p className={styles.price}>$ {format(item.price1)} </p> */}
+              <p className={styles.price}>Mayor: $ {format(item.price2)}</p>
 
               <div className={styles.btn}>
-                <AiOutlineMinusCircle
-                  onClick={() => decreaseCart(item.codigo)}
-                  size={30}
-                  color="grey"
-                />
-                <p>{item.quantity}</p>
-                <AiFillPlusCircle
-                  onClick={() => incrementCart(item.codigo)}
-                  size={30}
-                  color="green"
-                />
-              </div>
+                <span>
+                  <AiOutlineMinusCircle
+                    onClick={() => decreaseCart(item.codigo)}
+                    size={30}
+                    color="grey"
+                  />
+                  <p>{item.quantity}</p>
+                  <AiFillPlusCircle
+                    onClick={() => incrementCart(item.codigo)}
+                    size={30}
+                    color="green"
+                  />
+                </span>
 
-              <Button
-                onClick={() => deleteCart(item.codigo)}
-                className={styles.btnDelete}
-              >
-                <BsTrash3 size="15" color="grey" />
-              </Button>
+                <Button
+                  onClick={() => deleteCart(item.codigo)}
+                  className={styles.btnDelete}
+                >
+                  <BsTrash3 size="15" color="red" />
+                </Button>
+              </div>
             </div>
           </div>
         ))}

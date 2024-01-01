@@ -16,13 +16,17 @@ export default function category(props) {
   return (
     <div>
       <BasicLayout>
-     
         {hasProduct ? (
           <Listproducts products={products} title={category.name} />
         ) : (
-          <NotFound
-            title={"Upppss... No hay productos para mostrar en esta categoría"}
-          />
+          <>
+            <Separator />
+            <NotFound
+              title={
+                "Upppss... No hay productos para mostrar en esta categoría"
+              }
+            />
+          </>
         )}
         <FooterApp />
         <Footer />

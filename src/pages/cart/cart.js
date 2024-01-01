@@ -92,7 +92,7 @@ export default function CartPage() {
   return (
     <>
       <BasicLayout>
-        <Separator />
+      <Separator />
         {load ? (
           <h1>Cargando ...</h1>
         ) : (
@@ -100,11 +100,14 @@ export default function CartPage() {
             {hasProduct ? (
               <ListCart product={product} />
             ) : (
-              <NotFound
-                title={
-                  "Uppss... en este momento no hay productos en el Carrito"
-                }
-              />
+              <>
+              
+                <NotFound
+                  title={
+                    "Uppss... en este momento no hay productos en el Carrito"
+                  }
+                />
+              </>
             )}
           </>
         )}
